@@ -9,8 +9,8 @@ def obtener_token():
     body = {
         "aaaUser": {
             "attributes": {
-                "name": "admin",
-                "pwd": "C1sco12345"
+                "name": conf.usuario,
+                "pwd": conf.clave
             }
         }
     }
