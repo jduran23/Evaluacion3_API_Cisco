@@ -1,11 +1,13 @@
 import requests
 import json
+import conf
+
 
 def obtener_token():
     url = "https://10.10.20.14/api/aaaLogin.json"
 
     body = {
-        "aaaUser" : {
+        "aaaUser": {
             "attributes": {
                 "name": "admin",
                 "pwd": "C1sco12345"
