@@ -27,6 +27,8 @@ def obtener_token(usuario, clave):
 #top_system()
 #obtener_token(conf.usuario, conf.clave)
 #GET http://apic-ip-address/api/mo/topology/pod-1/node-1/sys/ch/bslot/board/sensor-3.json
+#GET http://APIC-IP/api/mo/uni/tn-TENANT_NAME.json
+#GET URL: http://APIC-IP/api/mo/uni/tn-TENANT_NAME.json?query-target=subtree&target-subtree-class=fvBD
 
 def top_system():
 
@@ -41,7 +43,6 @@ def top_system():
     print(respuesta.json())
 
 
-
 def status_node():
     cabecera = {
         "Content-Type": "application/json"
@@ -52,5 +53,25 @@ def status_node():
     requests.packages.urllib3.disable_warnings()
     respuesta = requests.get(sandbox+"/api/mo/topology/pod-1/node-101/sys.json", headers=cabecera, cookies=galleta, verify=False)
     print(respuesta.json())
-status_node()
+
+def status_bridgedomain():
+
+    cabecera = {
+        "Content-Type": "application/json"
+    }
+    galleta = {
+        "APIC-Cookie": obtener_token(conf.usuario, conf.clave)
+    }
+    requests.packages.urllib3.disable_warnings()
+    respuesta = requests.get(sandbox+"/api/mo/uni/tn-Heroes.json?query-target=subtree&target-subtree-class=fvBD", headers=cabecera, cookies=galleta, verify=False)
+    print(respuesta.json())
+
+
+
+
+
+
+
+
+
 
